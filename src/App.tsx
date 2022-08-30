@@ -1,7 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Photo from './pages/Photo/Photo';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { createGlobalStyle } from 'styled-components';
@@ -28,8 +26,8 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/photo/:id" element={<Photo />} />
+          <Route path="/" />
+          <Route path="/photo/:id" />
         </Routes>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
