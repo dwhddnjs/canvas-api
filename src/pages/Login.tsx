@@ -1,26 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const SignUp = () => {
+const Login = () => {
   return (
-    <SignUpContainer>
-      <SignUpTitle>회원가입</SignUpTitle>
+    <SignInContainer>
+      <SignInTitle>Login</SignInTitle>
       <InputWrapper>
-        <SignUpInput placeholder="name" />
-        <SignUpInput placeholder="Email" />
-        <SignUpInput placeholder="Password1" />
-        <SignUpInput placeholder="Password2" />
+        <SignInInput placeholder="Email" />
+        <SignInInput placeholder="Password" />
         <ButtonWrapper>
-          <SignUpButton>회원가입</SignUpButton>
+          <SignInButton>
+            <Link to="/mypage">로그인</Link>
+          </SignInButton>
+          <SignInButton>
+            <Link to="/register">회원가입</Link>
+          </SignInButton>
         </ButtonWrapper>
       </InputWrapper>
-    </SignUpContainer>
+    </SignInContainer>
   );
 };
 
-export default SignUp;
+export default Login;
 
-const SignUpContainer = styled.div`
+const SignInContainer = styled.div`
   width: 500px;
   background-color: #ffffff;
   height: 600px;
@@ -39,7 +43,7 @@ const InputWrapper = styled.div`
   align-items: center;
 `;
 
-const SignUpInput = styled.input`
+const SignInInput = styled.input`
   width: 300px;
   height: 50px;
   border: 1px solid #333333;
@@ -48,7 +52,7 @@ const SignUpInput = styled.input`
   padding: 10px;
 `;
 
-const SignUpTitle = styled.span`
+const SignInTitle = styled.span`
   color: #333333;
   font-size: 48px;
   font-weight: 800;
@@ -59,7 +63,7 @@ const ButtonWrapper = styled.div`
   margin-top: 20px;
 `;
 
-const SignUpButton = styled.button`
+const SignInButton = styled.button`
   width: 100px;
   height: 50px;
   margin: 20px;

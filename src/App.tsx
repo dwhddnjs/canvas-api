@@ -4,9 +4,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
 import MyPage from './pages/MyPage';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -38,8 +38,8 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </BrowserRouter>
