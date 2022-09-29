@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Axios from 'axios';
-import qs from 'qs';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [inputForm, setInputForm] = useState({
     name: '',
     email: '',
@@ -33,6 +35,7 @@ const Register = () => {
         },
         url: 'http://localhost:4000/api/user/register',
       });
+      navigate('/');
       return res;
     } catch (error) {
       console.log(error);

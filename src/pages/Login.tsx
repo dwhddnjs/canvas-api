@@ -1,18 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Axios from 'axios';
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const [inputForm, setInputForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleOnChange = (e: any) => {
+    const { name, value } = e.target;
+    setInputForm({
+      ...inputForm,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = async () => {
+    try {
+      const res = await Axios({
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        url: 'http://localhost:4000/api/user/login',
+        data: inputForm,
+      });
+      if (res.data) {
+        sessionStorage.setItem('auth', res.data);
+        navigate('/mypage');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <SignInContainer>
       <SignInTitle>Login</SignInTitle>
       <InputWrapper>
-        <SignInInput placeholder="Email" />
-        <SignInInput placeholder="Password" />
+        <SignInInput
+          placeholder="Email"
+          name="email"
+          value={inputForm.email}
+          onChange={handleOnChange}
+        />
+        <SignInInput
+          placeholder="Password"
+          name="password"
+          value={inputForm.password}
+          onChange={handleOnChange}
+        />
         <ButtonWrapper>
-          <SignInButton>
-            <Link to="/mypage">로그인</Link>
-          </SignInButton>
+          <SignInButton onClick={handleOnSubmit}>로그인</SignInButton>
           <SignInButton>
             <Link to="/register">회원가입</Link>
           </SignInButton>
